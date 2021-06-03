@@ -67,12 +67,10 @@ public class Repetition {
 
     @Override
     public String toString() {
-        return "Repetition{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", place='" + place + '\'' +
-                ", performances=" + performances +
-                ", actors=" + actors +
-                '}';
+        return "Репетиция " + id +
+                ": дата - " + date +
+                ", место - " + place +
+                ", спектакль - " + performances +
+                ", актёры - " + actors + ".";
     }
 }

@@ -65,11 +65,9 @@ public class Director {
 
     @Override
     public String toString() {
-        return "Director{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", experience='" + experience + '\'' +
-                '}';
+        return "Режиссёр " + id +
+                ":  имя - " + name +
+                ", тлф - " + telephone +
+                ", опыт - " + experience + " лет.";
     }
 }

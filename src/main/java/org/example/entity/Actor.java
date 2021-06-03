@@ -62,11 +62,10 @@ public class Actor {
 
     @Override
     public String toString() {
-        return "Actor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", experience='" + experience + '\'' +
-                '}';
+        return "Актёр " + id +
+                ":  имя - " + name +
+                ", тлф - " + telephone +
+                ", опыт - " + experience + " лет.";
+
     }
 }

@@ -53,4 +53,12 @@ public class Performance {
     public void setDirector(Director director) {
         this.director = director;
     }
+
+    @Override
+    public String toString() {
+        return "Спектакль" + id +
+                ":  название - " + name +
+                ", дата - " + date +
+                ", режиссёр" + director.getName() + ".";
+    }
 }
