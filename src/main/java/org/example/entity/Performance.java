@@ -58,7 +58,17 @@ public class Performance {
     public String toString() {
         return "Спектакль" + id +
                 ":  название - " + name +
-                ", дата - " + date +
-                ", режиссёр" + director.getName() + ".";
+                ", дата - " + date + ".";
     }
+
+  /*  @Override
+    public String toString() {
+        return "Performance{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", director=" + director +
+                ", repetition=" + repetition +
+                '}';
+    }*/
 }

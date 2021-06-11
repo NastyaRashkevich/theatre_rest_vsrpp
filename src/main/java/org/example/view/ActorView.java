@@ -14,9 +14,14 @@ public class ActorView {
     private ActorController actorController = new ActorController();
 
     public void getActors() throws SQLException {
-        List<Actor> actors = actorController.getAllActors();
-        System.out.println("Список всех актёров: ");
-        actors.forEach(actor -> System.out.println(actor.toString()));
+        try {
+            List<Actor> actors = actorController.getAllActors();
+            System.out.println("Список всех актёров: ");
+            actors.forEach(actor -> System.out.println(actor.toString()));
+        } catch (NullPointerException e) {  //если программа обращается или получает доступ к объекту, а ссылка на него равна нулю (null)
+            System.out.println("cписок пуст.");
+            run();
+        }
     }
 
     public void deleteActor() throws SQLException {
@@ -26,8 +31,9 @@ public class ActorView {
         Long id = Long.parseLong(scanner1.next());
         try {
             actorController.deleteActor(id);
-        } catch (ServiceException e) {
             System.out.println("Актёр с id " + id + " удалён.");
+        } catch (ServiceException e) {
+            System.out.println("Актёр с id " + id + " не найден.");
         }
     }
 
@@ -35,40 +41,38 @@ public class ActorView {
         Scanner scanner2 = new Scanner(System.in);
 
         System.out.println("Введите id актёра, которго хотите посмотреть: ");
-        Long id = Long.parseLong(scanner2.next());  //Как работают сканнеры?
-        try {   //Почему в предыдущем трай было без иф элс??
+        Long id = Long.parseLong(scanner2.next());
+        try {
             if (actorController.getActorById(id) != null) {
                 System.out.println(actorController.getActorById(id).toString());
             } else {
                 System.out.println("Актёра с стаким id не существует.");
             }
-        } catch (NullPointerException e) {  //Поч кэтч разный каждый раз?
-            System.out.println("Такого номера нет, попробуйте ещё раз.");
+        } catch (NullPointerException e) {
+            System.out.println("Неверный номер, попробуйте ещё раз.");
             actorById();
         }
     }
 
     public void addActor() throws SQLException {
-        try {
+
             Scanner scanner3 = new Scanner(System.in);
             Actor newActor = new Actor();
 
             System.out.println("Имя актёра: ");
-            String actorName = scanner3.nextLine();  //К вопросу о сканнерах, поч здесь сразу 3?
+            String actorName = scanner3.nextLine();
             newActor.setName(actorName);
 
             System.out.println("Телефон актёра: ");
             String actorTel = scanner3.nextLine();
             newActor.setTelephone(actorTel);
-                                                    //Почему не добавляем сюда айдишник репы??
+
             System.out.println("Стаж актёра: ");
             String actorExp = scanner3.nextLine();
             newActor.setExperience(actorExp);
 
             actorController.saveActor(newActor);
-        } catch (SQLException e) {
-            e.printStackTrace();  //Сделала, как в видосе, но чо было у тебя?
-        }
+
     }
 
     public void updateActor() throws SQLException {
@@ -77,7 +81,7 @@ public class ActorView {
             System.out.println("id актёра: ");
             Long id = Long.parseLong(scanner4.next());
 
-            Actor newActor; //Избыточный инициализатор переменной (был у тебя, но я удалила поле видео )
+            Actor newActor;
             newActor = actorController.getActorById(id);
 
             Scanner scanner5 = new Scanner(System.in);
@@ -133,7 +137,7 @@ public class ActorView {
                     work = false;
                     break;
                 default:
-                    System.out.println("Нет тдействия под таким номером.");
+                    System.out.println("Нет действия под таким номером.");
             }
         }
     }

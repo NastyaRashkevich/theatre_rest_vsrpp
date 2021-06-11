@@ -69,8 +69,6 @@ public class Repetition {
     public String toString() {
         return "Репетиция " + id +
                 ": дата - " + date +
-                ", место - " + place +
-                ", спектакль - " + performances +
-                ", актёры - " + actors + ".";
+                ", место - " + place + ".";
     }
 }

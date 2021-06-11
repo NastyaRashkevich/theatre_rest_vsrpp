@@ -16,11 +16,11 @@ public class ActorRepoImpl implements IRepo<Actor, Long> {
 
     @Override
     public void add(Actor actor) throws SQLException {
-        session = HibernateUtil.getSessionFactory().openSession();  //подкл хибер, открываем сессию
-        transaction = session.beginTransaction();  //начинаем транзакцию
-        session.save(actor);  //сохр актёра
-        transaction.commit();  //метод коммит - фиксация, завершает все изменения бд
-        session.close();  //сессия закрылась
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        session.save(actor);
+        transaction.commit();
+        session.close();
     }
 
     @Override
